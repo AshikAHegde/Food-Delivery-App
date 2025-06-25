@@ -6,6 +6,9 @@ import {
   Link
 } from "react-router-dom";
 import Login from './screens/login';
+import '../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
   return (
@@ -21,3 +24,5 @@ function App() {
 }
 
 export default App;
+
+//38min
