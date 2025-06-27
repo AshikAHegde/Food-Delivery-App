@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
-const mongoURI = "mongodb+srv://hegdeashik13:Ashik@cluster0.xzwuh3b.mongodb.net/GoFoodDataBase?retryWrites=true&w=majority&appName=Cluster0"
-//our database connection string
+const mongoURI = "mongodb://localhost:27017/GoFoodDataBase" // our local mongodb storage
+
+// const mongoURI = "mongodb+srv://hegdeashik13:Ashik@cluster0.xzwuh3b.mongodb.net/GoFoodDataBase?retryWrites=true&w=majority&appName=Cluster0"
+// //our database connection string
 
 const mongodb_Connect = async () => {
     await mongoose.connect(mongoURI, { useNewUrlParser: true }).then(async () => {
