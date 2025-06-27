@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const [cred, setCred] = useState({ email: "", password: "" })
+    const navigate = useNavigate();
 
     const HandelSubmit = async (e) => {
         console.log(cred);
@@ -19,7 +20,12 @@ const Login = () => {
         const json = await response.json();
         console.log(json);
         if (!json.success) {
-            alert("Enter Valid Credientials");
+            alert("Enter Valid Credentials");
+        }
+        else {
+            localStorage.setItem('token', json.token);
+            alert("Login Successfully");
+            navigate('/');
         }
     };
 

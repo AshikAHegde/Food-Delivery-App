@@ -1,24 +1,35 @@
 import React from 'react'
 
-const Card = () => {
+const Card = ({ foodName }) => {
+
+    let options = foodName.options[0];   // options ={ }  //a object
+    // console.log(typeof(options))
+    let priceoptions = Object.keys(options); // making a array of keys 
+    // console.log(priceoptions)
     return (
         <div className="card mt-3 p-2" style={{ "width": "18rem", "maxHeight": "360px" }}>
-            <img src="https://www.shutterstock.com/shutterstock/photos/2532283473/display_1500/stock-photo-veg-momos-or-steamed-momos-with-tomato-chilli-sauce-indian-veg-momo-2532283473.jpg" className="card-img-top" alt="..." />
+            <img src={`${foodName.img}`} className="card-img-top" alt="..." />
             <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Lorem ipsum dolor sit amet.</p>
+                <h5 className="card-title">{foodName.name}</h5>
+                <p className="card-text">{foodName.description}</p>
                 <div className="container w-100 ">
                     <select className="m-2 h-100 bg-success rounded">
                         {Array.from(Array(6), (e, i) => {
                             return <option key={i + 1} value={i + 1}> {i + 1}</option>
                         })}
                     </select>
+
                     <select className="m-2 h-100 bg-success rounded">
-                        <option value="full">Full</option>
-                        <option value="half">Half</option>
+                        {priceoptions.map((data) => {
+                            return (
+                                <option value={data}> {data} </option>
+                            )
+                        })}
                     </select>
+
                     <div className="d-inline h-100 fs-5 ">
-                        Total Price:
+                        {/* {foodName.options[0]
+                        } */}
                     </div>
                 </div>
             </div>
@@ -27,3 +38,5 @@ const Card = () => {
 }
 
 export default Card
+
+

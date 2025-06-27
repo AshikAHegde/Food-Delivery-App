@@ -20,6 +20,8 @@ app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', createuser)
+app.use('/api', require('./routes/DisplayData'))
+
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
