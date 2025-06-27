@@ -8,7 +8,7 @@ const Card = ({ foodName }) => {
     // console.log(priceoptions)
     return (
         <div className="card mt-3 p-2" style={{ "width": "18rem", "maxHeight": "360px" }}>
-            <img src={`${foodName.img}`} className="card-img-top" alt="..." />
+            <img src={`${foodName.img}`} className="card-img-top h-12" alt="..." style={{ height: "130px", objectFit: "cover"}} />
             <div className="card-body">
                 <h5 className="card-title">{foodName.name}</h5>
                 <p className="card-text">{foodName.description}</p>
