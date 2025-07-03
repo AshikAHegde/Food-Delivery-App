@@ -23,6 +23,7 @@ const Login = () => {
             alert("Enter Valid Credentials");
         }
         else {
+            localStorage.setItem('userEmail', cred.email);
             localStorage.setItem('token', json.token);
             alert("Login Successfully");
             navigate('/');

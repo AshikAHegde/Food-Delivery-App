@@ -28,14 +28,12 @@ const Home = () => {
         setfoodcat(result[1]);
     }
 
-
-
     return (
         <div>
             <div>
                 <Navbar />
             </div>
-            {/* <Carousel />  no we are not using this */} 
+            {/* <Carousel />  no we are not using this */}
             <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel" style={{ objectFit: "contain !important" }}>
                 <div className="carousel-inner" id='carousel'>
                     <div className="carousel-caption " style={{ zIndex: "10" }}>
@@ -71,6 +69,7 @@ const Home = () => {
                     foodcat.length !== 0 ?
                         foodcat.map((data) => {
                             return (
+                                <div>
                                 <div className='row mb-3' >
                                     <div key={data._id} className='fs-3 m-3'>
                                         {data.CategoryName}
@@ -86,7 +85,10 @@ const Home = () => {
                                                 ))
                                             : <div className='col-12'>No Items in this Category</div>
                                     }
-                                </div>)
+                                </div>
+                                    <hr />
+                                </div>
+                                )
                         })
                         : <>
                             No Items to Show

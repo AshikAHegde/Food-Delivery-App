@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Badge } from 'react-bootstrap';
+import Modal from '../Modal';
+import Cart from '../screens/cart';
+import { useCart } from './Context_Reducer';
 const Navbar = () => {
+    let data = useCart();
+    const [cartview, setcartview] = useState(false);
+
     const [isCollapsed, setIsCollapsed] = useState(true);
 
     const toggleNavbar = () => {
         setIsCollapsed(!isCollapsed);
     };
 
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const handleLogout = ()=>{
+    const handleLogout = () => {
         localStorage.removeItem("token");
         navigate("/");
     }
@@ -35,7 +42,7 @@ const navigate = useNavigate();
                         {
                             localStorage.getItem("token") ?
                                 <li className="nav-item ">
-                                    <Link className="nav-link active fs-5" to="/">My Orders </Link>
+                                    <Link className="nav-link active fs-5" to="/myorder">My Orders </Link>
                                 </li> : ""
                         }
 
@@ -48,13 +55,15 @@ const navigate = useNavigate();
                         :
                         <div className="d-flex">
 
-                        <div>
-                            <Link className="btn bg-white text-success mx-2" to="/login">My Cart</Link>
-                        </div>
-                        <div className="d-flex">
-                            <Link className="btn bg-white text-danger mx-2" to="/" onClick={handleLogout}>Logout</Link>
-                            {/* here we can use to='/' but it executes only on the link not on the whole button so its better to use navigate in the onclick function */}
-                        </div>
+                            <div className="btn bg-white text-success mx-2" onClick={() => setcartview(true)} >
+                            My Cart <Badge pill bg="danger"> {data.length} </Badge>
+                            </div>
+                            {cartview ? <Modal onClose={() => setcartview(false)} > <Cart /> </Modal> : ""}
+
+                            <div className="d-flex">
+                                <Link className="btn bg-white text-danger mx-2" to="/" onClick={handleLogout}>Logout</Link>
+                                {/* here we can use to='/' but it executes only on the link not on the whole button so its better to use navigate in the onclick function */}
+                            </div>
 
                         </div>
                     }

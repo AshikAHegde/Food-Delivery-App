@@ -55,7 +55,7 @@ router.post('/loginuser',
             let user = await userModel.findOne({ email })
             const pass_comp = await bcrypt.compare(password, user.password);
             if (pass_comp) {
-                const data = {
+                const data = {  
                     user: { 
                         id: user._id 
                     }

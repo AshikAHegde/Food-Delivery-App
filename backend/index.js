@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const mongodb_Connect = require('./db')
+const  orderData = require('./routes/OrderData')
 const createuser = require('./routes/createUser')
 const app = express()
 const port = 5000
@@ -21,6 +22,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api', createuser)
 app.use('/api', require('./routes/DisplayData'))
+app.use('/api', orderData)
 
 
 app.listen(port, () => {
