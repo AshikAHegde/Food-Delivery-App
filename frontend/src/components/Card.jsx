@@ -19,25 +19,16 @@ const Card = ({ foodName }) => {
 
     const handelAddtoCart = async () => {
 
-        let food = []
+        let food = {}
         for (const item of data) {
-            if (item.id === foodName._id) {
+            if (item.id === foodName._id && item.size === size) {
                 food = item;
-                break;
-            }
-        }
-        if (food !== []) {
-            if (food.size === size) {
-                await dispatch({ type: "UPDATE", id: foodName._id, price: options[size] * qty, qty: qty })
+                await dispatch({ type: "UPDATE", id: foodName._id, size: size, price: options[size] * qty, qty: qty })
                 return
             }
-            else if (food.size !== size) {
-                await dispatch({ type: "ADD", id: foodName._id, name: foodName.name, price: options[size] * qty, qty: qty, size: size,img: foodName.img  })
-                return
-            }
-            return
         }
         await dispatch({ type: "ADD", id: foodName._id, name: foodName.name, price: options[size] * qty, qty: qty, size: size, img: foodName.img })
+        return;
     }
 
     let finalprice = qty * parseInt(options[size]);
