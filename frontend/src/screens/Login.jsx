@@ -8,7 +8,7 @@ const Login = () => {
     const HandelSubmit = async (e) => {
         console.log(cred);
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/api/loginuser",
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/loginuser`,
             {
                 method: "POST",
                 headers: {

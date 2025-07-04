@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link , useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -9,7 +9,7 @@ const Signup = () => {
     const HandelSubmit = async (e) => {
         console.log(cred);
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/api/createuser",
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/createuser`,
             {
                 method: "POST",
                 headers: {
@@ -23,8 +23,8 @@ const Signup = () => {
         if (!json.success) {
             alert("Enter Valid Credientials");
         }
-        else{
-             navigate('/login')
+        else {
+            navigate('/login')
         }
     };
 

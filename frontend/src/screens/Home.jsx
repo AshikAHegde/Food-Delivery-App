@@ -17,7 +17,7 @@ const Home = () => {
     const loadData = async () => {
         // http://192.168.61.58:5000/api/foodData
         // http://localhost:5000/api/foodData
-        let response = await fetch("http://localhost:5000/api/foodData",
+        let response = await fetch(`${import.meta.env.VITE_API_URL}/api/foodData`,
             {
                 method: "POST",
                 headers: {
