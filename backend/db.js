@@ -3,7 +3,7 @@ const mongoURI = process.env.MONGO_URL
 
 
 const mongodb_Connect = async () => {
-    await mongoose.connect(mongoURI, { useNewUrlParser: true }).then(async () => {
+    await mongoose.connect(mongoURI).then(async () => {
         console.log("Connected to MongoDB");
 
         const fetched_food_items = await mongoose.connection.db.collection("food_items"); // Fetching the collection named "food_items" same working with some changes as of calling the functions like find ,findOne by usermodel

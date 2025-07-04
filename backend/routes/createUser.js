@@ -9,8 +9,8 @@ const jwtSecret = "secrect_key"
 router.post('/createuser',
     [body('email').isEmail(),
     body('name').isLength({ min: 5 }),
-    body('password', "Enter atleate 5 char").isLength({ min: 5 }),],
-    async (req, res) => {
+    body('password', "Enter atleate 5 char").isLength({ min: 5 }),]
+    , async (req, res) => {
 
         const { name, email, password, location } = req.body;
         const salt = await bcrypt.genSalt(10);
@@ -41,7 +41,6 @@ router.post('/createuser',
         }
     })
 
-
 router.post('/loginuser',
     [body('email').isEmail(),
     body('password', "Enter atleate 5 char").isLength({ min: 5 }),],
@@ -55,12 +54,12 @@ router.post('/loginuser',
             let user = await userModel.findOne({ email })
             const pass_comp = await bcrypt.compare(password, user.password);
             if (pass_comp) {
-                const data = {  
-                    user: { 
-                        id: user._id 
+                const data = {
+                    user: {
+                        id: user._id
                     }
                 }
-                const token = jwt.sign(data,jwtSecret)
+                const token = jwt.sign(data, jwtSecret)
                 return res.status(200).json({
                     success: true,
                     message: "User Found and Logined",
